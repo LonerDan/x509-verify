@@ -50,7 +50,7 @@ impl TryFrom<&Certificate> for VerifyingKey {
     type Error = Error;
 
     fn try_from(cert: &Certificate) -> Result<Self, Self::Error> {
-        cert.tbs_certificate
+        cert.tbs_certificate()
             .subject_public_key_info
             .owned_to_ref()
             .try_into()
